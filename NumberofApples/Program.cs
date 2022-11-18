@@ -5,69 +5,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace NumberofApples
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int sum = 0;
-            
+            int sum = 0, max = 0;
             Console.WriteLine("Enter the Number of shops :");
-            int N=Convert.ToInt32(Console.ReadLine());
+            int N = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the NUmeber of  Apples have evry shop: ");
             int[] arr1 = new int[N];
             for (int i = 0; i < N; i++)
             {
+                Console.Write("Enter Market ");
                 arr1[i] = Convert.ToInt32(Console.ReadLine());
+                max += arr1[i];
             }
             Console.WriteLine("Enter the Number Of QQ");
-            int K=Convert.ToInt32(Console.ReadLine());
+            int K = Convert.ToInt32(Console.ReadLine());
             int[] arr = new int[K];
-
-            for (int i = 0; i < K; i++) 
+            for (int i = 0; i < K; i++)
             {
-                arr[i] = Convert.ToInt32(Console.ReadLine());  
+                Console.Write(i+"QQ: ");
+                arr[i] = Convert.ToInt32(Console.ReadLine());
             }
-          for (int z = 0; z < K; z++) 
-          { 
-
-            for (int i = 1; i <= 23; i++) 
+            Console.WriteLine("Total Number of Fruit Market:" + max+"\n\n");
+            for (int z = 0; z < K; z++)
             {
-                    sum = 0;
-                for (int j = 0; j < N; j++) 
+                for (int i = 1; i <= max; i++)
                 {
-                    if (arr1[j] <= i)
+                    sum = 0;
+                    for (int j = 0; j < N; j++)
                     {
-                        sum += arr1[j];
-                    }
-                    else 
-                    {
-                        sum += i;
-                    }
-                
-                }
-                    if (sum >= arr[z]) 
-                    {
-                        if (sum > 23)
+                        if (arr1[j] <= i)
                         {
-                            sum = 23 - sum;
-                            Console.WriteLine(sum);
+                            sum += arr1[j];
+                        }
+                        else
+                        {
+                            sum += i;
+                        }
+                    }
+                    if (sum >= arr[z] || (sum >= max))
+                    {
+                        if (sum >= max)
+                        {
+
+                            Console.WriteLine("-1");
                             break;
                         }
-                        else 
+                        else
                         {
                             Console.WriteLine(i);
                             break;
                         }
-                    
                     }
-
+                }
             }
-
-          }
-
+            Console.ReadLine();
         }
     }
 }
-
